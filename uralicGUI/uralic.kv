@@ -1,0 +1,68 @@
+#:kivy 1.0
+
+TabbedPanel:
+    do_default_tab: False
+    TabbedPanelItem:
+    	text: 'Morphology'
+	    GridLayout:
+	        cols: 2
+	        Label:
+	            text: "Input:"
+	            size_hint_x: None
+	            size_hint_y: None
+	            width: 120
+	            height: 32
+	            valign: "top"
+	        TextInput:
+	            text: ''
+	            height: 60
+	            size_hint_y: None
+	        Label:
+	            text: ""
+	            size_hint_x: None
+	            size_hint_y: None
+	            height: 60
+	            width: 120
+	        Spinner:
+	            size_hint_y: None
+	            height: 60
+	            text: "Add languages..."
+	            values: "Add languages...",
+	            on_text: show_download()
+	        Label:
+	            text: ""
+	            size_hint_x: None
+	            size_hint_y: None
+	            height: 60
+	            width: 120
+		    GridLayout:
+		        cols: 2
+		        size_hint_y: None
+		        height: 60
+		        Button:
+		        	text: "Analyze"
+		        Button:
+		        	text: "Generate"
+	        Label:
+	            text: "Output:"
+	            size_hint_x: None
+	            width: 120
+	            valign: "top"
+	        TextInput:
+	            text: ''
+	            multiline: True
+    TabbedPanelItem:
+        text: 'Lemmatize'
+        BoxLayout:
+            Label:
+                text: 'Second tab content area'
+            Button:
+                text: 'Button that does nothing'
+    TabbedPanelItem:
+        text: 'Dictionaries'
+        Label:
+            text: 'Third tab content area'
+    TabbedPanelItem:
+        text: 'About'
+        Label:
+            text: 'Third tab content area'
