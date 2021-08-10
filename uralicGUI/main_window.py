@@ -25,6 +25,20 @@ import os
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 
+def stringify_json(json_dictionary, indent=0, indent_char="  "):
+	tabs = indent_char*indent
+	out_text = []
+	for key, value in json_dictionary.items():
+		out_text.append(tabs +"- " + key + ":")
+		print(type(value))
+		if type(value) is dict:
+			out_text.extend(stringify_json(value, indent=indent+1, indent_char=indent_char))
+		elif type(value) is list:
+			for t in value:
+				out_text.extend(stringify_json(t, indent=indent+1, indent_char=indent_char))
+		else:
+			out_text.append(tabs + indent_char + str(value))
+	return out_text
 
 
 def download_async(lang, popup):
@@ -58,6 +72,7 @@ class UralicApp(App):
 		fs = getattr(uralicApi, "__model_base_folders")()
 		langs = []
 		d_langs = []
+		dict_langs = []
 		for p in fs:
 			for f in glob(os.path.join(p, "*/")):
 				sep = "/"
@@ -70,9 +85,13 @@ class UralicApp(App):
 					langs.append(l)
 					if os.path.isfile(f + sep + "cg"):
 						d_langs.append(l)
+					if os.path.isfile(f + sep + "dictionary.json"):
+						dict_langs.append(l)
 
 		self.root.ids.lang_selector.values = [string_processing.iso_to_name(lang) + " - " +lang for lang in langs] + [ "Add languages..."]
 		self.root.ids.lang_selector_cg.values = [string_processing.iso_to_name(lang) + " - " +lang for lang in d_langs] + [ "Add languages..."]
+		self.root.ids.lang_selector_dict.values = [string_processing.iso_to_name(lang) + " - " +lang for lang in dict_langs] + [ "Add languages..."]
+
 
 	def cg(self):
 		lang = self.root.ids.lang_selector_cg.text.split(" - ")
@@ -88,7 +107,7 @@ class UralicApp(App):
 			try:
 				res = cg.disambiguate(words, temp_file="tmp")
 			except:
-				show_popup("Cg not found", "Please install CG3. See\n https://mikalikes.men/how-to-install-visl-cg3-on-mac-windows-and-linux/")
+				show_popup("Cg not found", "Please install CG3. See\n https://mikalikes.men/how-to-install -visl-cg3-on-mac-windows-and-linux/")
 				return
 			r = ""
 			for disamb_word in res:
@@ -110,6 +129,17 @@ class UralicApp(App):
 		res = ["\t".join([str(x) for x in r]) for r in uralicApi.analyze(text, lang)]
 		self.root.ids.morph_output.text = "\n".join(res)
 
+	def dictionary(self):
+		lang = self.root.ids.lang_selector_dict.text.split(" - ")
+		if len(lang) < 2:
+			show_popup("Select a language", "Please, select a language first")
+			return
+		lang = lang[-1]
+		text = self.root.ids.dict_input.text
+		res =  uralicApi.dictionary_search(text, lang)
+		
+		self.root.ids.dict_output.text = "\n".join(stringify_json(res))
+
 	def generate(self):
 		lang = self.root.ids.lang_selector.text.split(" - ")
 		if len(lang) < 2:
@@ -130,6 +160,11 @@ class UralicApp(App):
 			return
 		self.download_modal_view()
 
+	def show_download_dict(self):
+		if self.root.ids.lang_selector_dict.text != "Add languages...":
+			return
+		self.download_modal_view()
+
 	def download_modal_view(self):
 		view = ModalView(size_hint=(None, None), size=(400, 400))
 		layout = ScrollView(size_hint=(1, None), size=(400, 300), do_scroll_y=True, always_overscroll=True, scroll_type=['bars',"content"],bar_width=10,effect_cls="ScrollEffect")
@@ -145,6 +180,7 @@ class UralicApp(App):
 		self.populate_langs()
 		self.root.ids.lang_selector.text = "Select a language"
 		self.root.ids.lang_selector_cg.text = "Select a language"
+		self.root.ids.lang_selector_dict.text = "Select a language"
 
 def checkbox_language_action(checkbox, value):
 	print(checkbox.iso_code)

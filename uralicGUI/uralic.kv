@@ -89,9 +89,41 @@ TabbedPanel:
 	            readonly: True
     TabbedPanelItem:
         text: 'Dictionaries'
-        Label:
-            text: 'Third tab content area'
+	    GridLayout:
+	        cols: 1
+	        Label:
+	        	text: "Word:"
+                size_hint_y: None
+                height: 40
+	        TextInput:
+	        	id: dict_input
+	            text: ''
+                size_hint_y: None
+                height: 40
+	        Spinner:
+	        	id: lang_selector_dict
+	            size_hint_y: None
+	            height: 60
+	            text: "Select a language"
+	            values: "Add languages...",
+	            on_text: app.show_download_dict()
+	        Button:
+	        	text: "Search"
+                size_hint_y: None
+                height: 60
+                on_press: app.dictionary()
+	        TextInput:
+	        	id: dict_output
+	            text: ''
+	            multiline: True
+	            readonly: True
     TabbedPanelItem:
         text: 'About'
-        Label:
-            text: 'Third tab content area'
+        GridLayout:
+			cols: 1
+	        Label:
+	            text: 'This is a user interface for the Python library called UralicNLP. Please read the project\'s readme\n\nBrought to you by Mika Hämäläinen, Rootroo Ltd\n\nIf you use this tool in any academic work, please cite: \n\nHämäläinen, M. (2019) UralicNLP: An NLP Library for Uralic Languages. Journal of Open Source Software. \n\n(c) Mika Hämäläinen 2021 All rights reserved'
+	        Image:
+	        	size_hint_y: None
+	    		source: 'rootroo.png'
+	    		size: (128,128)
