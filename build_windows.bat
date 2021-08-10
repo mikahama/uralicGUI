@@ -6,3 +6,4 @@ copy /y lang_codes.json dist\run\uralicNLP\lang_codes.json
 copy /y rootroo.png dist\run\rootroo.png
 
 copy /y uralicGUI\uralic.kv dist\run\uralicGUI\uralic.kv
+robocopy windows_dist_files dist\run\
