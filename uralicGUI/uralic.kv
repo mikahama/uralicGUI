@@ -14,6 +14,7 @@ TabbedPanel:
 	            height: 32
 	            valign: "top"
 	        TextInput:
+	        	id: morph_input
 	            text: ''
 	            height: 60
 	            size_hint_y: None
@@ -24,9 +25,10 @@ TabbedPanel:
 	            height: 60
 	            width: 120
 	        Spinner:
+	        	id: lang_selector
 	            size_hint_y: None
 	            height: 60
-	            text: "Select language"
+	            text: "Select a language"
 	            values: "Add languages...",
 	            on_text: app.show_download()
 	        Label:
@@ -41,23 +43,50 @@ TabbedPanel:
 		        height: 60
 		        Button:
 		        	text: "Analyze"
+		        	on_press: app.analyze()
 		        Button:
 		        	text: "Generate"
+		        	on_press: app.generate()
 	        Label:
 	            text: "Output:"
 	            size_hint_x: None
 	            width: 120
 	            valign: "top"
 	        TextInput:
+	        	id: morph_output
 	            text: ''
 	            multiline: True
+	            readonly: True
     TabbedPanelItem:
-        text: 'Lemmatize'
+        text: 'Disambiguate'
         BoxLayout:
-            Label:
-                text: 'Second tab content area'
-            Button:
-                text: 'Button that does nothing'
+		    GridLayout:
+		        cols: 1
+	            Label:
+	                text: 'Text to analyze'
+	                size_hint_y: None
+	                height: 40
+		        TextInput:
+		        	id: cg_input
+		            text: ''
+		            multiline: True
+		        Spinner:
+		        	id: lang_selector_cg
+		            size_hint_y: None
+		            height: 60
+		            text: "Select a language"
+		            values: "Add languages...",
+		            on_text: app.show_download_cg()
+		        Button:
+		        	text: "Analyze Text"
+	                size_hint_y: None
+	                height: 60
+	                on_press: app.cg()
+	        TextInput:
+	        	id: cg_output
+	            text: ''
+	            multiline: True
+	            readonly: True
     TabbedPanelItem:
         text: 'Dictionaries'
         Label:
