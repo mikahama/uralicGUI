@@ -211,6 +211,7 @@ def build_download_checkboxes(layout):
 		langs = uralicApi.supported_languages()["morph"]
 	except:
 		show_popup("Error", "Error downloading the language list.")
+		return
 	langs.sort()
 	for lang in langs:
 		installed = lang_installed(lang)
@@ -220,5 +221,5 @@ def build_download_checkboxes(layout):
 		setattr(cb, "iso_code", lang)
 		cb.bind(active=checkbox_language_action)
 		l.add_widget(cb)
-		l.add_widget(Label(text=string_processing.iso_to_name(lang) + " - " +lang, size_hint_x= None, width=150))
+		l.add_widget(Label(text=string_processing.iso_to_name(lang) + " - " +lang))
 		layout.add_widget(l)
