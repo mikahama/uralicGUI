@@ -86,7 +86,7 @@ class UralicApp(App):
 		for sentence in sent_tokenize(text):
 			words = word_tokenize(sentence)
 			try:
-				res = cg.disambiguate(words)
+				res = cg.disambiguate(words, temp_file="tmp")
 			except:
 				show_popup("Cg not found", "Please install CG3. See\n https://mikalikes.men/how-to-install-visl-cg3-on-mac-windows-and-linux/")
 				return
