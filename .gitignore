@@ -3,3 +3,4 @@ tmp
 dist/*
 build/*
 .DS_Store
+mac_dist_files/uralicNLP.app/*
