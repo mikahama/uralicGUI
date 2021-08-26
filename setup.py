@@ -7,10 +7,12 @@ https://github.com/pypa/sampleproject
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
-import py2exe
+#import py2exe
 # To use a consistent encoding
 from codecs import open
 from os import path
+import sys
+from cx_Freeze import setup, Executable
 
 here = path.abspath(path.dirname(__file__))
 
@@ -18,8 +20,15 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+APP = ['run.py']
+
+base = None
+if sys.platform == "win32":
+    base = "Win32GUI"
+
 setup(
     name='uralicGUI',
+    app=APP,
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -77,6 +86,7 @@ setup(
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={},
+    setup_requires=['py2app'],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
@@ -90,11 +100,13 @@ setup(
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files # noqa
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
     data_files=[],
+    options={'py2app': {}, "bdist_mac": {"bundle_name":"uralicNLP", "iconfile":"uralic64.icns"}, "build_exe": {"packages": ["os"], "excludes": ["tkinter"]}},
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
     entry_points={},
+    executables = [Executable("run.py", base=base)],
     console=["run.py"],
     project_urls={  # Optional
         'Developer': 'https://mikakalevi.com/'
