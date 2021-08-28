@@ -13,3 +13,4 @@ cp -r build/uralicNLP.app mac_dist_files/
 mv mac_dist_files/uralicNLP.app/Contents/MacOS/run mac_dist_files/uralicNLP.app/Contents/MacOS/run2
 cp mac_auxiliary_files/Launcher.app/Contents/MacOS/Launcher mac_dist_files/uralicNLP.app/Contents/MacOS/run
 cp -r mac_auxiliary_files/Launcher.app/Contents/Resources/* mac_dist_files/uralicNLP.app/Contents/Resources/
+appdmg mac_auxiliary_files/dmg.json mac_dist_files/uralicNLP.dmg

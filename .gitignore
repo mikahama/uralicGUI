@@ -4,3 +4,7 @@ dist/*
 build/*
 .DS_Store
 mac_dist_files/uralicNLP.app/*
+mac_dist_files/uralicNLP.dmg
+node_modules/*
+package-lock.json
+
