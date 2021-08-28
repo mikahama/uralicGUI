@@ -100,7 +100,7 @@ setup(
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files # noqa
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
     data_files=[],
-    options={'py2app': {}, "bdist_mac": {"bundle_name":"uralicNLP", "iconfile":"uralic64.icns"}, "build_exe": {"packages": ["os"], "excludes": ["tkinter"]}},
+    options={"bdist_mac": {"bundle_name":"uralicNLP", "custom_info_plist":"mac_auxiliary_files/Info.plist", "iconfile":"uralic64.icns"}, "build_exe": {"packages": ["os"], "excludes": ["tkinter"]}},
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
