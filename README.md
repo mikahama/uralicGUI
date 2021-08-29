@@ -8,7 +8,7 @@
 
 [Windows](https://github.com/mikahama/uralicGUI/releases/download/1.0/install_uralicNLP.exe)
 
-[MacOs](https://github.com/mikahama/uralicGUI/releases/download/1.0-mac/uralicNLP.dmg)
+[MacOS](https://github.com/mikahama/uralicGUI/releases/download/1.0-mac/uralicNLP.dmg)
 
 # Features
 
