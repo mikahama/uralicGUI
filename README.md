@@ -33,3 +33,26 @@ Process entire sentences and get disambiguated lemmas.
 Consult the XML dictionaries and see what they contain.
 
 ![dictionary gui](https://github.com/mikahama/uralicGUI/raw/main/pics/dictionary.png)
+
+# Business solutions
+
+<img src="https://rootroo.com/cropped-logo-01-png/" alt="Rootroo logo" width="128px" height="128px">
+
+When your NLP needs grow out of what UralicNLP can provide, we have your back! [Rootroo offers consulting related to a variety of NLP tasks](https://rootroo.com/). We have a strong academic background in the state-of-the-art AI solutions for every NLP need. Just contact us, we won't bite.
+
+# Cite
+
+If you use UralicNLP in an academic publication, please cite it as follows:
+
+Hämäläinen, Mika. (2019). UralicNLP: An NLP Library for Uralic Languages. Journal of open source software, 4(37), [1345]. https://doi.org/10.21105/joss.01345
+
+    @article{uralicnlp_2019, 
+        title={{UralicNLP}: An {NLP} Library for {U}ralic Languages},
+        DOI={10.21105/joss.01345}, 
+        journal={Journal of Open Source Software}, 
+        author={Mika Hämäläinen}, 
+        year={2019}, 
+        volume={4},
+        number={37},
+        pages={1345}
+    }
