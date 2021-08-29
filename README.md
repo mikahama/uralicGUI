@@ -1,5 +1,7 @@
 # UralicNLP for desktops aka UralicGUI
 
+![CC BY NC ND](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)
+
 [UralicNLP](https://github.com/mikahama/uralicNLP) is a useful tool, but only if you know how to code. The goal of this project is to make UralicNLP easy to use for everyone!
 
 # Download
