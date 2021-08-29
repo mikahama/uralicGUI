@@ -12,7 +12,7 @@
 
 # Features
 
-UralicNLP can be used to process a variety of languages starting from endangered languages such as Erzya, Komi and Sami languages to larger languages such as Finnish, Russian, Arabic and such. [Check out the complete list fo supported languages!](https://models.uralicnlp.com/nightly/)
+UralicNLP can be used to process a variety of languages starting from endangered languages such as Erzya, Komi and Sami languages to larger languages such as Finnish, Russian, Arabic and such. [Check out the complete list of supported languages!](https://models.uralicnlp.com/nightly/)
 
 ## Morphology
 
