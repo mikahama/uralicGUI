@@ -18,3 +18,18 @@ UralicNLP can be used to process a variety of languages starting from endangered
 
 Lemmatize, analyze and inflect words.
 
+![analyze gui](https://github.com/mikahama/uralicGUI/raw/main/pics/morph_analyse.png)
+
+![inflect gui](https://github.com/mikahama/uralicGUI/raw/main/pics/morph_generate.png)
+
+## Disambiguation
+
+Process entire sentences and get disambiguated lemmas.
+
+![cg gui](https://github.com/mikahama/uralicGUI/raw/main/pics/cg.png)
+
+## Dictionaries
+
+Consult the XML dictionaries and see what they contain.
+
+![dictionary gui](https://github.com/mikahama/uralicGUI/raw/main/pics/dictionary.png)
